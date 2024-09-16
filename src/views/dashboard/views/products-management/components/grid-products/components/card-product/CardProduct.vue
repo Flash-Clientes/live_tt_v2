@@ -165,7 +165,7 @@ const openModal = (operation) => {
 
 img {
   max-width: 100%;
-  max-height: 150px;
+  max-height: calc(100% - 10px);
   object-fit: contain;
   padding: 10px 0;
   margin: 0 auto;
