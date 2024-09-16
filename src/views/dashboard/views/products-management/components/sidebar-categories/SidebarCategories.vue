@@ -1,8 +1,8 @@
 <template>
-  <div class="sc-container">
-    <div class="sc-header">
+  <n-card>
+    <template #header>
       <n-h3>Gerenciar Categorias</n-h3>
-    </div>
+    </template>
 
     <div class="sc-body">
       <InputSearch :placeholder="'Pesquisar categoria...'" />
@@ -23,35 +23,25 @@
       </n-list>
     </div>
 
-    <div class="sc-footer">
-      <n-button type="primary" size="small">
+    <template #footer>
+      <n-button type="primary" size="small" class="footer-button">
         <n-icon><i class="fa fa-plus"></i></n-icon> Adicionar Categoria
       </n-button>
-    </div>
-  </div>
+    </template>
+  </n-card>
 </template>
 
 <script setup>
 import { defineProps } from 'vue';
-import { NList, NListItem, NButton, NIcon, NCheckbox, NH3 } from 'naive-ui';
+import { NList, NListItem, NButton, NIcon, NCheckbox, NH3, NCard } from 'naive-ui';
 import InputSearch from '../input-search/InputSearch.vue';
 
 const props = defineProps(['categories']);
 </script>
 
 <style scoped>
-.sc-container {
-  display: flex;
-  flex-direction: column;
-  width: 290px;
-  background-color: #f5f5f5;
-}
-
-.sc-header {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 10px;
+.n-card {
+  width: 30%;
 }
 
 .sc-body {
@@ -66,10 +56,7 @@ const props = defineProps(['categories']);
   margin-left: auto;
 }
 
-.sc-footer {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 10px;
+.footer-button {
+    float: right;
 }
 </style>
