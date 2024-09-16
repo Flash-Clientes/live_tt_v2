@@ -3,9 +3,7 @@
     <n-layout has-sider v-if="!hideSidebar">
       <SidebarMenu :initial-locale="locale" @update-theme="updateTheme" />
       <n-layout-content class="main">
-        <div class="main-content">  
-         <router-view />
-        </div>
+        <router-view />
       </n-layout-content>
     </n-layout>
     <router-view v-else />
@@ -57,12 +55,7 @@ function updateTheme(selectedTheme) {
   padding: 0;
 }
 .main {
-  padding: 1px;
-}
-.main-content {
-  padding: 20px;
-  background-color: #fff;
-  height: 100%;
+  padding: 0px;
 }
 .button {
   padding: 10px 20px;
