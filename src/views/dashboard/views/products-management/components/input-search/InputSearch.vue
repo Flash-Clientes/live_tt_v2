@@ -1,14 +1,17 @@
 <template>
-    <div class="is-container">
-        <input type="text" :placeholder="placeholder" />
-        <i style="margin-right: 10px; font-size: 15px; color: #ccc;" class="fa fa-search"></i>
-    </div>
+  <div class="is-container">
+    <n-input :placeholder="placeholder" clearable />
+    <n-icon size="20" style="margin-right: 10px; color: #ccc;">
+      <i class="fa fa-search"></i>
+    </n-icon>
+  </div>
 </template>
 
 <script setup>
-const props = defineProps([
-    'placeholder',
-]);
+import { defineProps } from 'vue';
+import { NInput, NIcon } from 'naive-ui';
+
+const props = defineProps(['placeholder']);
 </script>
 
 <style scoped>
@@ -22,18 +25,23 @@ const props = defineProps([
     border-radius: 5px;
 }
 
-.is-container input {
+.n-input {
     width: 100%;
-    padding: 10px;
-    border: none;
 }
 
-.is-container input:focus {
+.n-input input {
+    padding: 10px;
+    outline: none;    
+}   
+
+.n-input input:focus {
     outline: none;
 }
 
-.is-container i {
-    font-size: 20px;
+.n-icon {
+    cursor: pointer;
     color: #ccc;
+    font-size: 12px;
+    margin-left: 8px;
 }
 </style>
