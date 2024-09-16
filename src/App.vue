@@ -34,4 +34,17 @@ function updateTheme(selectedTheme) {
 }
 </script>
 
-<style></style>
+<style>
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #14d085;
+  border-radius: 10px;
+} 
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0e9e6f;
+}
+</style>
