@@ -8,9 +8,7 @@ import ProductsManagement from '../views/dashboard/views/products-management/Pro
 const routes = [
   {
     path: '/',
-    component: Home,
-    name: 'Home',
-    meta: { requiresAuth: false }, // Requer autenticação
+    redirect: '/dashboard/tasks'
   },
   {
     path: '/dashboard',
