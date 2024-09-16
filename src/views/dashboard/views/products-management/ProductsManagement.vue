@@ -1,27 +1,29 @@
 <template>
-  <n-page-header :title="t('menu.products')" />
-  <div class="pm-header">
-    <InputSearch :placeholder="'Pesquisar produto...'" />
-  
-    <button class="button button-primary" @click="openModal">
-      <i class="fa fa-plus"></i> Adicionar Produto
-    </button>
-  </div>
+    <n-page-header :title="t('menu.products')" class="page-title" />
+    
+    <content>
+      <div class="pm-header">
+        <InputSearch :placeholder="'Pesquisar produto...'" />
 
-  <div class="pm-body">
-    <SidebarCategories :categories="availableCategories" />
+        <n-button type="primary" @click="openModal">
+          <n-icon><i class="fa fa-plus"></i></n-icon> Adicionar Produto
+        </n-button>
+      </div>
 
-    <GridProducts :products="availableProducts" />
-  </div>
+      <div class="pm-body">
+        <SidebarCategories :categories="availableCategories" />
+        <GridProducts :products="availableProducts" />
+      </div>
 
-  <CustomModal 
-    v-model:showModal="showModal"
-    size="md"
-    title="Cadastrar Produto" 
-    :fields="registerProductModalFields"
-    :functionToCall="registerProduct"
-    submitText="Cadastrar"    
-  />
+      <CustomModal 
+        v-model:showModal="showModal"
+        size="md"
+        title="Cadastrar Produto" 
+        :fields="registerProductModalFields"
+        :functionToCall="registerProduct"
+        submitText="Cadastrar"    
+      />
+    </content>
 </template>
 
 <script setup>
@@ -29,45 +31,21 @@ import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import CustomModal from '../../components/custom-modal/CustomModal.vue';
-
 import InputSearch from './components/input-search/InputSearch.vue';
 import SidebarCategories from './components/sidebar-categories/SidebarCategories.vue';
 import GridProducts from './components/grid-products/GridProducts.vue';
+import { NButton, NIcon, NPageHeader } from 'naive-ui';
 
-const { t } = useI18n(); // Função de tradução
+const { t } = useI18n();
 const showModal = ref(false);
 
 const availableCategories = ref([
-  {
-    id: 0,
-    name: 'Todas as categorias',
-    products: 53
-  },
-  {
-    id: 1,
-    name: 'Refrigeradores',
-    products: 10
-  },
-  {
-    id: 2,
-    name: 'Lavadoras',
-    products: 20
-  },
-  {
-    id: 3,
-    name: 'Fogões',
-    products: 15
-  },
-  {
-    id: 4,
-    name: 'Coifas/Exaustores',
-    products: 5
-  },
-  {
-    id: 5,
-    name: 'Secadoras',
-    products: 8
-  }
+  { id: 0, name: 'Todas as categorias', products: 53 },
+  { id: 1, name: 'Refrigeradores', products: 10 },
+  { id: 2, name: 'Lavadoras', products: 20 },
+  { id: 3, name: 'Fogões', products: 15 },
+  { id: 4, name: 'Coifas/Exaustores', products: 5 },
+  { id: 5, name: 'Secadoras', products: 8 }
 ]);
 
 const availableProducts = ref([
@@ -153,20 +131,26 @@ const registerProduct = () => {
   showModal.value = false;
 };
 
-const openModal = () => showModal.value = true; 
+const openModal = () => showModal.value = true;
 </script>
 
-<style>
+<style scoped>
+.page-title {
+  padding: 20px;
+}
+
 .pm-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
+  margin: 20px;
 }
 
 .pm-body {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
 }
 </style>
